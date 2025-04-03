@@ -1,0 +1,267 @@
+body {
+  background: linear-gradient(135deg, 
+     /* Самый темный оттенок */
+    #181818, 
+    #1e1e1e, 
+    #242424, 
+    #2a2a2a, 
+    #303030, 
+    #363636, 
+    #3c3c3c
+  );
+  background-attachment: fixed; /* Фон фиксированный, чтобы не двигался при скролле */
+  margin: 0; /* Убираем отступы по умолчанию */
+  height: 100vh; /* Высота страницы равна высоте экрана */
+  display: flex;
+  justify-content: center; /* Центрируем содержимое по горизонтали */
+  align-items: center; /* Центрируем содержимое по вертикали */
+}
+/* опишем базовый стиль кнопки калькулятора */
+.calculator {
+  background: #161515; /* Темный фон калькулятора */
+  border-radius: 20px; /* Скругленные углы */
+  box-shadow: 7px 7px 50px rgb(215, 210, 210); /* Тень */
+  padding: 33px;
+  width: 314px;
+}
+
+.my-btn {
+  width: 70px;
+  height: 70px;
+  margin-right: 5px;
+  margin-top: 5px;
+  border: none;
+  border-radius: .4rem; /* Скругленные углы */
+  background: linear-gradient(90deg, 
+  #000000, #090909, #141414, #1e1e1e, #282828);
+  background-size: 200% 100%; /* Увеличиваем размер фона для анимации */
+  color: white;
+  box-shadow: 0px 0px 15px rgba(155, 147, 147, 0.971); /* Тень */
+  font-size: 1.5rem;
+  cursor: pointer;  
+  user-select: none;
+  font-weight: 700; /* Жирный шрифт */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Плавные анимации */
+}
+.my-btn:hover {
+  background: #6a6d6c; /* Цвет при наведении */
+  transform: scale(1.15); /* Увеличение при наведении */
+  box-shadow: 0px 0px 27px rgba(0, 0, 0, 1); /* Тень при наведении */
+}
+.my-btn:hover {
+  background: #a59c9c; /* Новый цвет при наведении */
+}
+.my-btn.my-btn.primary:hover {
+  background: #a59c9c; /* Новый цвет при наведении */
+}
+.my-btn.my-btn.secondary:hover {
+  background: #a59c9c; /* Новый цвет при наведении */
+}
+
+
+
+
+/* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
+.my-btn:active {
+  filter: brightness(152%); /* увеличим интенсивность цвета для эффекта вспышки */
+}
+
+/* селектор для кнопок первостепенных операций */
+.my-btn.primary { 
+  background: linear-gradient(90deg, #0f903c, #19b04e, #25ca5e, #31d26a);
+}
+
+/* селектор для кнопок второстепенных операций */ 
+.my-btn.secondary {
+  background: linear-gradient(90deg, #4010ea, #3e30b4, #d32ddf); /* Серый градиент */
+}
+
+/* селектор для кнопки расчета выражения (=) */
+.my-btn.execute { 
+  width: 150px;          /* сделаем кнопку шире других */
+  border-radius: 25px;   /* подкорректируем округлость */
+  
+}
+.footer {
+  position: absolute; /* Абсолютное позиционирование */
+  bottom: 20px; /* Отступ снизу */
+  left: 50%; /* Центрирование по горизонтали */
+  transform: translateX(-50%); /* Сдвигаем на половину ширины */
+  font-size: 1rem;
+  color: #19b04e; /* Белый текст */
+  text-align: center;
+  width: 100%; /* Ширина 100%, чтобы текст был точно по центру */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+}
+/* селектор для поля вывода результата */
+.result { 
+  background: #2c2c2c; /* Темный фон экрана */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 20px;
+    width: 267px;
+    height: 50px;
+    text-align: right;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3); /* Внутренняя тень */
+    color: #ffffff; /* Белый текст */
+    overflow: hidden; /* Скрываем текст, выходящий за пределы */
+    white-space: nowrap; /* Текст не переносится */
+    font-weight: 500; /* Жирный шрифт */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+/* Стили для кнопки смены темы */
+.theme-btn {
+  position: absolute; /* Абсолютное позиционирование */
+  top: 40px; /* Отступ сверху */
+  right: 40px; /* Отступ справа */
+  background: #353535; /* Цвет фона кнопки */
+  border: none;
+  border-radius: 50%; /* Круглая кнопка */
+  width: 55px;
+  height: 55px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 27px rgba(0, 0, 0, 1);
+  transition: transform 0.6s ease, box-shadow 0.6s ease; /* Плавные анимации */
+}
+
+.theme-btn:hover {
+  background: #6a6d6c; /* Цвет при наведении */
+  transform: scale(1.5); /* Увеличение при наведении */
+  box-shadow: 0px 0px 27px rgba(0, 0, 0, 1); /* Тень при наведении */
+}
+
+/* Светлая тема */
+body.light-theme {
+  background: #f0f0f0; /* Светлый фон */
+  color: #000000; /* Черный текст */
+}
+
+body.light-theme .calculator {
+  background: #ffffff; /* Белый фон калькулятора */
+  box-shadow: 7px 7px 52px rgba(17, 16, 16, 0.6); /* Тень */
+}
+
+
+body.light-theme .result {
+  background: #e0e0e0; /* Светлый фон экрана */
+  color: #000000; /* Черный текст */
+  border: 2px solid #cccccc;
+}
+
+body.light-theme .theme-btn {
+  background: #cccccc; /* Цвет кнопки в светлой теме */
+  color: #000000; /* Черный текст */
+}
+
+/* Стили для выпадающего списка */
+/* Контейнер для блока с автором */
+.author-info {
+  position: absolute; /* Абсолютное позиционирование */
+  top: 20px; /* Отступ сверху */
+  left: 20px; /* Отступ слева */
+  z-index: 10; /* Чтобы блок был поверх других элементов */
+  color: white;
+}
+/* Стили для сворачивающихся подробностей */
+details {
+  border: 1px solid #33d25b;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #17a047;
+  font-family: 'Arial', sans-serif;
+}
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+details[open] summary {
+  margin-bottom: 10px;
+}
+
+/* Контейнер для текста с целью ЛР */
+.lab-purpose {
+  position: absolute; /* Абсолютное позиционирование */
+  top: 152px; /* Отступ сверху */
+  left: 20px; /* Отступ справа */
+  width: 300px; /* Ширина блока */
+  background-color: #454345; /* Белый фон с прозрачностью */
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 12px 12px 30px rgb(255, 255, 255, 0.5); /* Тень */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  z-index: 10; /* Чтобы текст был поверх других элементов */
+}
+
+/* Подсветка ключевых слов */
+mark {
+  background-color: #d32ddf;
+  
+  border-radius: 10px;
+  color: #ffffff; /* Черный текст */
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+body.light-theme .lab-purpose {
+  background: #ffffff; /* Белый фон калькулятора */
+  box-shadow: 7px 7px 52px rgba(17, 16, 16, 0.6); /* Тень */
+  color: #000000;
+  
+}
+
+body.light-theme mark {
+  color: #000000;
+  background-color: #27c92f; /* Желтый фон */
+}
+
+/* Кнопка GitHub */
+.github-btn {
+  position: fixed; /* Фиксированное позиционирование */
+  bottom: 40px; /* Отступ снизу */
+  right: 40px; /* Отступ справа */
+  background-color: #ffffff; /* Белый фон */
+  border-radius: 50%; /* Круглая форма */
+  padding: 10px;
+  box-shadow: 0px 0px 27px rgba(0, 0, 0, 1); /* Тень */
+  transition: transform 0.6s ease, box-shadow 0.6s ease; /* Плавные анимации */
+  z-index: 1000; /* Чтобы кнопка была поверх других элементов */
+}
+
+.github-btn:hover {
+  transform: scale(1.5); /* Увеличение при наведении */
+  box-shadow: 0px 0px 27px rgba(0, 0, 0, 1); /* Тень при наведении */
+  
+}
+
+.github-btn img {
+  display: block; /* Убираем лишние отступы у изображения */
+}
+ body {
+  background-image: url('https://img1.akspic.ru/crops/2/5/9/2/22952/22952-solnechnaya_sistema-nauka-planeta-karlikovaya_planeta-atmosfera-7680x4320.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  background-size: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  color: white;
+  position: relative;
+}
+
