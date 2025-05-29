@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Spotify</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Стили для Spotify-хедера */
+        .spotify-header {
+            background-color: #000;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #282828;
+        }
+        
+        .spotify-logo {
+            color: #1DB954;
+            font-weight: bold;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .spotify-logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        .spotify-nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .spotify-home-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        
+        .spotify-home-btn:hover {
+            background-color: #282828;
+        }
+        
+        .spotify-home-btn i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Spotify-хедер -->
+    <header class="spotify-header">
+        <a href="#" class="spotify-logo" id="logo-link">
+            <i class="fab fa-spotify"></i>
+            <span>Spotify</span>
+        </a>
+        <nav class="spotify-nav">
+            <button class="spotify-home-btn" id="home-button">
+                <i class="fas fa-home"></i>
+                Домой
+            </button>
+        </nav>
+    </header>
+
+    <div id="root"></div>  <!-- Сюда будет вставляться весь JS-код -->
+
+    <!-- Bootstrap JS + Popper -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Главный JS-файл -->
+    <script src="main.js" type="module"></script>
+    
+    <script>
+        // Обработчики для хедера
+        document.getElementById('logo-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            resetToMainPage();
+        });
+        
+        document.getElementById('home-button').addEventListener('click', resetToMainPage);
+        
+        function resetToMainPage() {
+            const root = document.getElementById('root');
+            root.innerHTML = '';
+            // Предполагаем, что MainPage доступен глобально
+            if (window.MainPage) {
+                new MainPage(root).render();
+            }
+        }
+    </script>
+</body>
+</html>
